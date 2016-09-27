@@ -1,0 +1,16 @@
+if [ "$#" -ne 1 ]
+then
+        route add default gw 192.168.7.1
+        /usr/sbin/ntpdate -b -s -u ca.pool.ntp.org
+        sudo dpkg-reconfigure tzdata
+        date
+        echo "Fin du script ${0:2}"
+        exit 
+else    
+        route add default gw 192.168.7.1
+        echo "$1"       
+        /usr/sbin/ntpdate -b -s -u $1
+        date
+        echo "Fin du script ${0:2}"
+        exit
+fi
